@@ -1,7 +1,7 @@
 package com.shomazzapp.ststest
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,5 +13,11 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .add(R.id.container, ItemsListFragment.newInstance())
             .commit()
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else super.onBackPressed()
     }
 }

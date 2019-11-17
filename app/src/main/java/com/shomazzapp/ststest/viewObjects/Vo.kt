@@ -1,5 +1,6 @@
 package com.shomazzapp.ststest.viewObjects
 
 import com.shomazzapp.ststest.VoType
+import java.io.Serializable
 
-abstract class ItemVo (val voType: VoType)
+abstract class Vo (val voType: VoType): Serializable

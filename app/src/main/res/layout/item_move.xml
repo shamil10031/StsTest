@@ -4,17 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="#DFF">
+    android:background="#FFB">
 
     <TextView
-        android:id="@+id/noticeFlightDate"
+        android:id="@+id/moveFromPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         tools:text="Text" />
 
     <TextView
-        android:id="@+id/noticeFlightGate"
+        android:id="@+id/moveToPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        tools:text="Text" />
+
+    <TextView
+        android:id="@+id/moveEstimateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Text" />

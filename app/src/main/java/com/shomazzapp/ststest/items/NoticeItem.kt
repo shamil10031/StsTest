@@ -1,26 +1,26 @@
 package com.shomazzapp.ststest.items
 
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
-import com.shomazzapp.ststest.viewObjects.ItemVo
+import android.view.View
+import com.shomazzapp.ststest.R
+import com.shomazzapp.ststest.utils.toReadableString
 import com.shomazzapp.ststest.viewObjects.NoticeVo
-import java.util.*
+import kotlinx.android.synthetic.main.item_notice.view.*
 
-class NoticeItem(itemVo: NoticeVo) : AbstractItem(itemVo) {
+class NoticeItem(itemVo: NoticeVo) : AbstractItem<NoticeVo>(itemVo) {
 
-    override fun getResourceId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getResourceId(): Int = R.layout.item_notice
 
-    override fun getViewType(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getViewType(): Int = R.layout.item_notice
+
+    override fun onCreateViewHolder(view: View): RecyclerView.ViewHolder = ViewHolder(view)
 
     override fun bindView(viewHolder: RecyclerView.ViewHolder) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        viewHolder.itemView.apply {
+            noticeFlightDate.text = itemVo.flightDate?.toReadableString()
+            noticeFlightGate.text = itemVo.gate.toString()
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

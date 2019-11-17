@@ -1,25 +1,26 @@
 package com.shomazzapp.ststest.items
 
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
-import com.shomazzapp.ststest.viewObjects.ItemVo
+import android.view.View
+import com.shomazzapp.ststest.R
 import com.shomazzapp.ststest.viewObjects.MoveVo
+import kotlinx.android.synthetic.main.item_move.view.*
 
-class MoveItem(itemVo: MoveVo): AbstractItem(itemVo) {
+class MoveItem(itemVo: MoveVo): AbstractItem<MoveVo>(itemVo) {
 
-    override fun getResourceId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getResourceId(): Int = R.layout.item_move
 
-    override fun getViewType(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getViewType(): Int = R.layout.item_move
+
+    override fun onCreateViewHolder(view: View): RecyclerView.ViewHolder = ViewHolder(view)
 
     override fun bindView(viewHolder: RecyclerView.ViewHolder) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        viewHolder.itemView.apply {
+            moveFromPlace.text = itemVo.fromPlace
+            moveToPlace.text = itemVo.toPlace
+            moveEstimateTime.text = itemVo.getEstimateTimeString()
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 }

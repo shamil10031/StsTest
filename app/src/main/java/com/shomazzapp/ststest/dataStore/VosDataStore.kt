@@ -5,15 +5,15 @@ import com.shomazzapp.ststest.viewObjects.*
 import java.util.*
 import kotlin.random.Random
 
-class ItemsDataStore {
+class VosDataStore {
 
     companion object {
 
-        fun getNextItem(): ItemVo {
+        fun getNextItem(): Vo {
             return when (val i = Random.nextInt(3)) {
                 0 -> getRandomNotice()
                 1 -> getRandomEvent()
-                3 -> getRandomMove()
+                2 -> getRandomMove()
                 else -> throw IllegalArgumentException("Not implemented case for number $i")
             }
         }

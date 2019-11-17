@@ -6,7 +6,7 @@ data class MoveVo(
     val fromPlace: String? = null,
     val toPlace: String? = null,
     private val estimateTime: TimeInterval? = null
-) : ItemVo(VoType.MOVE) {
+) : Vo(VoType.MOVE) {
 
     fun getEstimateTimeString(): String {
         val value = estimateTime?.value

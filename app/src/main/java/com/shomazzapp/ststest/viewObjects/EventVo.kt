@@ -7,4 +7,4 @@ data class EventVo(
     var name: String? = null,
     var startTime: Date? = null,
     var endTime: Date? = null
-) : ItemVo(VoType.EVENT)
+) : Vo(VoType.EVENT)

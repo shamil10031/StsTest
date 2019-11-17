@@ -2,10 +2,10 @@ package com.shomazzapp.ststest.items
 
 import android.support.annotation.LayoutRes
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
-import com.shomazzapp.ststest.viewObjects.ItemVo
+import android.view.View
+import com.shomazzapp.ststest.viewObjects.Vo
 
-abstract class AbstractItem(val itemVo: ItemVo) {
+abstract class AbstractItem<T: Vo>(val itemVo: T) {
 
     @LayoutRes
     abstract fun getResourceId(): Int
@@ -14,6 +14,6 @@ abstract class AbstractItem(val itemVo: ItemVo) {
 
     abstract fun bindView(viewHolder: RecyclerView.ViewHolder)
 
-    abstract fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder
+    abstract fun onCreateViewHolder(view: View): RecyclerView.ViewHolder
 
 }
