@@ -8,7 +8,7 @@ import com.shomazzapp.ststest.items.AbstractItem
 import com.shomazzapp.ststest.viewObjects.Vo
 
 class ItemsAdapter(
-    private val items: List<AbstractItem<*>>,
+    private val items: List<ItemWrapper>,
     private val onClick: (Vo) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -18,7 +18,8 @@ class ItemsAdapter(
     private val itemTypesCache: SparseArray<AbstractItem<*>> = SparseArray()
 
     init {
-        items.forEach(::regItemViewType)
+        items.map { it.getAbstractItem() }
+            .forEach(::regItemViewType)
     }
 
     override fun getItemCount(): Int = items.size
@@ -31,14 +32,15 @@ class ItemsAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = items[position]
+        val item = items[position].getAbstractItem()
         item.bindView(holder)
         holder.itemView.setOnClickListener {
             onClick.invoke(item.itemVo)
         }
     }
 
-    override fun getItemViewType(position: Int): Int = items[position].getViewType()
+    override fun getItemViewType(position: Int): Int =
+        items[position].getAbstractItem().getViewType()
 
     private fun regItemViewType(item: AbstractItem<*>) {
         if (itemTypesCache.indexOfKey(item.getViewType()) <= 0) {

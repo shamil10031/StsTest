@@ -1,12 +1,21 @@
 package com.shomazzapp.ststest.viewObjects
 
-import com.shomazzapp.ststest.VoType
+import com.shomazzapp.ststest.ItemWrapper
+import com.shomazzapp.ststest.LayoutWrapper
+import com.shomazzapp.ststest.items.AbstractItem
+import com.shomazzapp.ststest.items.MoveItem
+import com.shomazzapp.ststest.layoutWrappers.AbstractLayoutWrapper
+import com.shomazzapp.ststest.layoutWrappers.MoveLayoutWrapper
 
 data class MoveVo(
     val fromPlace: String? = null,
     val toPlace: String? = null,
     private val estimateTime: TimeInterval? = null
-) : Vo(VoType.MOVE) {
+) : Vo(), LayoutWrapper, ItemWrapper {
+
+    override fun getLayoutWrapper(): AbstractLayoutWrapper<*> = MoveLayoutWrapper(this)
+
+    override fun getAbstractItem(): AbstractItem<*> = MoveItem(this)
 
     fun getEstimateTimeString(): String {
         val value = estimateTime?.value
