@@ -10,12 +10,18 @@ class VosDataStore {
     companion object {
 
         fun getNextItem(): Vo {
-            return when (val i = Random.nextInt(3)) {
+            return when (val i = Random.nextInt(4)) {
                 0 -> getRandomNotice()
                 1 -> getRandomEvent()
                 2 -> getRandomMove()
+                3 -> getRandomNew()
                 else -> throw IllegalArgumentException("Not implemented case for number $i")
             }
+        }
+
+        private fun getRandomNew(): NewVo {
+            val gateNumber = Random.nextInt(1, 99)
+            return NewVo("New #$gateNumber")
         }
 
         private fun getRandomNotice(): NoticeVo {
